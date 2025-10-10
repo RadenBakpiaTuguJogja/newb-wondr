@@ -1,15 +1,15 @@
-name = "Newb X Legacy"
-version = [0, 16, 0]
+name = "§o§l§aNewb Wondr"
+version = [1, 1, 0]
 min_supported_mc_version = [1, 21, 111]
 description = '''
 §c%w
-§7- An enchanced vanilla shader for Minecraft!
+§7- §fAdding clarity to MCBE graphics.
 %v
-§3https://devendrn.github.io/newb-shader/
+§3https://KianSantan88.github.io/newb-wondr/
 ''' # %w = patch warning, %v = version
-authors = ["devendrn"]
-url = "https://devendrn.github.io/newb-shader/"
-uuid = "95f774cf-4afa-73e7-a21a-72146307b1d2" # Use https://www.uuidgenerator.net/version4
+authors = ["raden1", "devendrn"]
+url = "https://KianSantan88.github.io/newb-wondr/"
+uuid = "ad826400-3b73-4513-bfae-7f72ba951236" # Use https://www.uuidgenerator.net/version4
 materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
@@ -29,53 +29,94 @@ credits = '''
 # right-most subpack is enabled by default
 
 [[subpack]]
-define = "ROUNDED_CLOUDS"
-materials = ["Clouds"]
+define = "HIGH_REALISTIC_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-Rounded Clouds
+§4High (realistic clouds)
+- §oRealistic-ish clouds and the usual.
 '''
 
 [[subpack]]
-define = "BOX_CLOUDS"
-materials = ["Clouds", "RenderChunk"]
+define = "HIGH_ROUNDED_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-Box Clouds
+§4High (rounded clouds)
+- §oMultilayer 16 steps Rounded Clouds
+- §oFolliage waves
+- §oGlow leaks and Shimmer
 '''
 
 [[subpack]]
-define = "CHUNK_ANIM"
-materials = ["RenderChunk"]
+define = "HIGH_ROUNDED_CLOUDS_NO_AURORA"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-Chunk loading animation
+§4High (rounded clouds, aurora disabled)
+- §oMultilayer 16 steps Rounded Clouds
+- §oNo Aurora
+- §oFolliage waves
+- §oGlow leaks and Shimmer
 '''
 
 [[subpack]]
-define = "NO_WAVE_NO_FOG"
-materials = ["RenderChunk"]
+define = "HIGH_BOX_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-No fog and wave effects
+§4High (box clouds)
+- §oMultilayer Box Clouds
+- §oFolliage waves
+- §oGlow leaks and Shimmer
+'''
+
+
+[[subpack]]
+define = "MEDIUM_REALISTIC_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
+description = '''
+§eMedium (realistic clouds)
+- §oRealistic-ish clouds
+- §oNo Folliage waves
+- §oNo Glow and Shimmer
+'''
+
+
+[[subpack]]
+define = "MEDIUM_BOX_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
+description = '''
+§eMedium (box clouds)
+- §oBox Clouds
+- §oNo Folliage Waves
+- §oNo Glow and Shimmer
 '''
 
 [[subpack]]
-define = "NO_FOG"
-materials = ["RenderChunk"]
+define = "MEDIUM_ROUNDED_CLOUDS"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-No fog effect
+§eMedium (rounded clouds)
+- §oRounded Clouds
+- §oNo Folliage Waves
+- §oNo Glow and Shimmer
 '''
 
 [[subpack]]
-define = "NO_WAVE"
-materials = ["RenderChunk"]
+define = "MEDIUM_ROUNDED_CLOUDS_NO_AURORA"
+materials = ["Clouds", "RenderChunk", "Sky", "EndSky"]
 description = '''
-No wave effects
+§eMedium (rounded clouds, aurora disabled)
+- §oRounded Clouds
+- §oNo Aurora
+- §oNo Folliage Waves 
+- §oNo Glow and Shimmer
 '''
 
-#[[subpack]]
-#define = "LITE"
-#materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
-#description = '''
-#Many effects disabled. A bit lighter!
-#'''
+[[subpack]]
+define = "LITE"
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
+description = '''
+§aLite (soft clouds)
+- §oMany effects disabled. A bit lighter!
+'''
 
 [[subpack]]
 define = "DEFAULT"

@@ -9,14 +9,25 @@ struct nl_environment {
   float dayFactor;
 };
 
-bool detectEnd(float DIMENSION_ID) {
-  return DIMENSION_ID == 2.0;
-}
+uniform vec4 GameTimeOfDay;
+   uniform vec4 DimensionID;
 
-bool detectNether(float DIMENSION_ID, vec3 FOG_COLOR, vec2 FOG_CONTROL) {
+    #define dayTime GameTimeOfDay.w
+    #define DAY smoothstep(0.77,0.82,dayTime)+(smoothstep(0.23, 0.18, dayTime))
+    #define NIGHT smoothstep(0.22,0.27,dayTime) * (1.0 - smoothstep(0.73, 0.78, dayTime))
+    #define SUNSET smoothstep(0.695, 0.745, dayTime) * (1.0 - smoothstep(0.78, 0.83, dayTime))
+    #define SUNRISE smoothstep(0.16, 0.21, dayTime) * (1.0 - smoothstep(0.255, 0.305, dayTime))
+
+    #define timeofday vec3(NIGHT, SUNSET + SUNRISE, DAY)
+    
+#define detectEnd (DimensionID.w == 2.0)
+
+#define Nether (DimensionID.w == 1.0)
+
+bool detectNether(vec3 FOG_COLOR, vec2 FOG_CONTROL) {
   // also consider underlava as nether
   bool underLava = FOG_CONTROL.x == 0.0 && FOG_COLOR.b == 0.0 && FOG_COLOR.g < 0.18 && FOG_COLOR.r-FOG_COLOR.g > 0.1;
-  return (DIMENSION_ID == 1.0) || underLava;
+  return Nether || underLava;
 }
 
 bool detectUnderwater(vec3 FOG_COLOR, vec2 FOG_CONTROL) {
@@ -33,17 +44,14 @@ float detectRain(vec3 FOG_CONTROL) {
   return val*val*(3.0 - 2.0*val);
 }
 
-float detectDayFactor(vec3 FOG_COLOR) {
-  return min(dot(FOG_COLOR, vec3(0.5,0.7,0.5)), 1.0);
-}
 
-nl_environment nlDetectEnvironment(float DIMENSION_ID, float TIME_OF_DAY, float DAY, vec3 FOG_COLOR, vec3 FOG_CONTROL) {
+nl_environment nlDetectEnvironment(vec3 FOG_COLOR, vec3 FOG_CONTROL) {
   nl_environment e;
-  e.end = detectEnd(DIMENSION_ID);
-  e.nether = detectNether(DIMENSION_ID, FOG_COLOR, FOG_CONTROL.xy);
+  e.end = detectEnd;
+  e.nether = detectNether(FOG_COLOR, FOG_CONTROL.xy);
   e.underwater = detectUnderwater(FOG_COLOR, FOG_CONTROL.xy);
   e.rainFactor = detectRain(FOG_CONTROL.xyz);
-  e.dayFactor = detectDayFactor(FOG_COLOR);
+  e.dayFactor = DAY;
   return e;
 }
 

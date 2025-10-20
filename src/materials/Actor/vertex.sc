@@ -17,6 +17,9 @@ uniform vec4 FogControl;
 uniform vec4 UVAnimation;
 uniform mat4 Bones[8];
 uniform vec4 ViewPositionAndTime;
+uniform vec4 DimensionID;
+uniform vec4 TimeOfDay;
+uniform vec4 Day;
 
 void main() {
   mat4 World = u_model[0];

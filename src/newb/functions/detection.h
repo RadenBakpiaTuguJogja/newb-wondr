@@ -45,10 +45,15 @@ float detectRain(vec3 FOG_CONTROL) {
 }
 
 
-nl_environment nlDetectEnvironment(vec3 FOG_COLOR, vec3 FOG_CONTROL) {
+nl_environment nlDetectEnvironment(float DIMENSION_ID, float TIME_OF_DAY, float DAY, vec3 FOG_COLOR, vec3 FOG_CONTROL) {
   nl_environment e;
+<<<<<<< HEAD
   e.end = detectEnd;
   e.nether = detectNether(FOG_COLOR, FOG_CONTROL.xy);
+=======
+  e.end = detectEnd(DIMENSION_ID);
+  e.nether = detectNether(DIMENSION_ID, FOG_COLOR, FOG_CONTROL.xy);
+>>>>>>> 961ef4f65e3f18006ea54904670055bbeeb9fd7d
   e.underwater = detectUnderwater(FOG_COLOR, FOG_CONTROL.xy);
   e.rainFactor = detectRain(FOG_CONTROL.xyz);
   e.dayFactor = DAY;
